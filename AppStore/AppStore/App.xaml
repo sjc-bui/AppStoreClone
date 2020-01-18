@@ -1,8 +1,67 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppStore.App">
+<Application
+    x:Class="AppStore.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <Application.Resources>
+        <ResourceDictionary>
+            <OnPlatform x:Key="BoldFont" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Roboto-Bold" />
+            </OnPlatform>
+            <OnPlatform x:Key="LightFont" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Roboto-Light" />
+            </OnPlatform>
+            <OnPlatform x:Key="ThinFont" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Roboto-Thin" />
+            </OnPlatform>
+            <OnPlatform x:Key="RegularFont" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Roboto-Regular" />
+            </OnPlatform>
 
+            <ControlTemplate x:Key="GeneralTemplate">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid
+                        Margin="30,70,30,10"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="29"
+                            Text="{TemplateBinding Parent.Title}"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                        <StackLayout
+                            Grid.Column="1"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center">
+                            <Frame
+                                Padding="0"
+                                CornerRadius="18"
+                                HasShadow="False"
+                                HorizontalOptions="End"
+                                IsClippedToBounds="True">
+                                <Image
+                                    Aspect="AspectFill"
+                                    HeightRequest="36"
+                                    Source="profile.jpg"
+                                    WidthRequest="36" />
+                            </Frame>
+                        </StackLayout>
+                    </Grid>
+                    <ContentPresenter
+                        Grid.Row="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand" />
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
